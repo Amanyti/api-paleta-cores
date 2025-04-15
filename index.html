@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta de Cores</title>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg,var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container do login */
+        .login-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px var(--cor-extra);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .color-black{
+            color: grey;
+        }
+
+        
+
+        .login-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Cabeçalho */
+        .login-header {
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color:var(--cor-extra);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: var(--cor-extra);
+            font-size: 20px;
+        }
+
+        /* Formulário */
+        .login-form .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-form label {
+            display: block;
+            color: var(--cor-extra);
+            font-size: 17px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: var(--cor-primaria);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Botão */
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, var(--cor-primaria),var(--cor-secundaria));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background: linear-gradient(to right, var(--cor-secundaria), var(--cor-primaria));
+       
+            box-shadow: 0 5px 15px var(--cor-extra);
+        }
+
+        /* Links e footer */
+        .login-footer {
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .login-footer a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color:var(--cor-extra);
+            font-size: 14px;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 0 10px;
+        }
+
+        /* Social buttons */
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .google {
+            background-color: #db4437;
+        }
+
+        .twitter {
+            background-color: #1da1f2;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Bem-vindo aos Temas</h1>
+            <p>Troque temas e descubra a Magia</p>
+        </div>
+
+        <div class="input-group">
+            <label><span id="theme-name" class="color-black">Nenhuma paleta carregada</span></label>
+        </div>
+
+        <br>
+
+        <form id="paletaForm" class="login-form">
+            <div class="input-group">
+                <label for="nome-paleta">Nome da Paleta</label>
+                <input type="text" id="nome-paleta" placeholder="Ex: ocean, dark, pastel" required>
+            </div>
+
+            <button type="submit" class="login-button">Buscar Paleta</button>
+        </form>
+
+        <div class="login-footer">
+            <div class="divider">ou</div>
+            <p>Sem preferência? <a href="#" id="gerar-aleatorio">Gere aleatoriamente</a></p>
+            <button id="btn-aleatorio" class="login-button">Gerar Tema Aleatório</button>
+        </div>
+        
+        <div id="paleta-info" style="margin-top: 20px; padding: 15px; background-color: rgba(255,255,255,0.8); border-radius: 8px; display: none;">
+            <h2>Informações da Paleta</h2>
+            <h3 id="nome-paleta-atual"></h3> <!-- Novo elemento adicionado -->
+            <p><strong>Primária:</strong> <span id="cor-primaria"></span></p>
+            <p><strong>Secundária:</strong> <span id="cor-secundaria"></span></p>
+            <p><strong>Extra:</strong> <span id="cor-extra"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const urlDaAPI = 'https://localhost:7046/PaletaCores';
+        let temaAtual = '';
+        
+        // Aplicar tema recebido da API
+        function aplicarTema(dados) {
+    const root = document.documentElement;
+    temaAtual = dados.theme;
+    
+    root.style.setProperty("--cor-primaria", dados.cores.primaria);
+    root.style.setProperty("--cor-secundaria", dados.cores.secundaria);
+    root.style.setProperty("--cor-extra", dados.cores.extra);
+    
+    // Atualiza o nome no topo da página
+    document.getElementById("theme-name").textContent = temaAtual;
+    document.getElementById("theme-name").className = "";
+    
+    // Atualiza as informações detalhadas
+    document.getElementById("nome-paleta-atual").textContent = `Tema: ${temaAtual}`;
+    document.getElementById("cor-primaria").textContent = dados.cores.primaria;
+    document.getElementById("cor-secundaria").textContent = dados.cores.secundaria;
+    document.getElementById("cor-extra").textContent = dados.cores.extra;
+    document.getElementById("paleta-info").style.display = "block";
+    
+    // Opcional: Adicionar a cor do tema ao título
+    document.getElementById("nome-paleta-atual").style.color = dados.cores.extra;
+}
+        
+        // Buscar paleta por nome
+        async function buscarPaletaPorNome(nome) {
+            try {
+                const response = await fetch(`${urlDaAPI}/${nome}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Paleta "${nome}" não encontrada`);
+                }
+                
+                const dados = await response.json();
+                aplicarTema(dados);
+
+            } catch (error) {
+                console.error("Erro:", error);
+                document.getElementById("theme-name").textContent = error.message;
+                document.getElementById("theme-name").className = "color-black";
+                document.getElementById("paleta-info").style.display = "none";
+            }
+        }
+        
+        // Gerar paleta aleatória
+        async function gerarPaletaAleatoria() {
+            try {
+                const response = await fetch(urlDaAPI);
+                
+                if (!response.ok) {
+                    throw new Error("Erro ao gerar paleta aleatória");
+                }
+                
+                const dados = await response.json();
+                aplicarTema(dados);
+            } catch (error) {
+                console.error("Erro:", error);
+                document.getElementById("theme-name").textContent = "Erro ao carregar tema";
+                document.getElementById("theme-name").className = "color-black";
+                document.getElementById("paleta-info").style.display = "none";
+            }
+        }
+        
+        // Event Listeners
+        document.getElementById("paletaForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nomePaleta = document.getElementById("nome-paleta").value.trim();
+            if (nomePaleta) {
+                document.getElementById("nome-paleta").value = '';
+                buscarPaletaPorNome(nomePaleta);
+            }
+        });
+        
+        document.getElementById("btn-aleatorio").addEventListener("click", gerarPaletaAleatoria);
+        document.getElementById("gerar-aleatorio").addEventListener("click", function(e) {
+            e.preventDefault();
+            gerarPaletaAleatoria();
+        });
+        
+        // Carregar uma paleta aleatória ao iniciar
+        document.addEventListener('DOMContentLoaded', gerarPaletaAleatoria);
+    </script>
+</body>
+</html>
