@@ -1,6 +1,6 @@
 # 🎨 Projeto API - Paleta de Cores
 
-Este projeto foi desenvolvido como parte do curso de extensão **"Trabalhando com APIs em C# e JavaScript"**. O objetivo do exercício é criar uma API própria e consumi-la por meio de uma interface HTML simples. Este projeto é um aplicação web que permite visualizar e explorar diferentes paletas de cores. Ele consome uma API REST que fornece combinações de cores pré-definidas. O usuário pode buscar paletas específicas por nome ou aleatórias.
+Este projeto foi desenvolvido em dupla como parte do curso de extensão **"Trabalhando com APIs em C# e JavaScript"**. O objetivo do exercício é criar uma API própria e consumi-la por meio de uma interface HTML simples. Este projeto é um aplicação web que permite visualizar e explorar diferentes paletas de cores. Ele consome uma API REST que fornece combinações de cores pré-definidas. O usuário pode buscar paletas específicas por nome ou aleatórias.
 > 🧠 Este projeto contou com o apoio da IA **DeepSeek** como assistente no desenvolvimento de código e da IA **ChatGPT** para a documentação.
 
 
@@ -26,3 +26,6 @@ O projeto é composto por dois principais arquivos:
 - Frontend → HTML5, CSS3 (com variáveis CSS) e JavaScript (Fetch API para consumo da API)
 - Backend → ASP.NET Core (API REST) e Swagger para documentação da API
 
+## 🧑‍🤝‍🧑 Projeto desenvolvido por:
+- **Amanda Errera** [@Amanyti](https://github.com/Amanyti)
+- **Larissa Garcia** [@EuLarissaGarcia](https://github.com/EuLarissaGarcia)
